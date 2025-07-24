@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>🎯 عداد متابعين Kick</title>
+  <style>
+    body { background: #111; color: #fff; font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+    input { padding: 10px; font-size: 18px; border-radius: 8px; border: none; width: 300px; }
+    button { padding: 10px 20px; font-size: 18px; background: #28d; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+    iframe { width: 100%; max-width: 900px; height: 500px; border: none; margin-top: 20px; }
+    #code { margin-top: 40px; text-align: left; background: #222; padding: 20px; border-radius: 8px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🎯 عداد متابعين Kick</h1>
+  <input type="text" id="usernameInput" placeholder="اكتب اسم القناة">
+  <button onclick="loadCounter()">عرض العداد</button>
+
+  <div id="counterFrame" style="display:none;">
+    <iframe id="liveFrame" src=""></iframe>
+  </div>
+
+  <div id="code">
+    <h2>الكود (تقدر تنسخه):</h2>
+    <pre>&lt;iframe src="https://livecounts.io/embed/kick/CHANNEL_NAME"&gt;&lt;/iframe&gt;</pre>
+  </div>
+
+  <script>
+    function loadCounter() {
+      const u = document.getElementById("usernameInput").value.trim();
+      if (!u) return alert("اكتب اسم القناة!");
+      document.getElementById("liveFrame").src = `https://livecounts.io/embed/kick/${u}`;
+      document.getElementById("counterFrame").style.display = "block";
+      document.querySelector("#code pre").textContent =
+        `&lt;iframe src="https://livecounts.io/embed/kick/${u}"&gt;&lt;/iframe&gt;`;
+    }
+  </script>
+</body>
+</html>
